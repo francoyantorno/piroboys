@@ -15,4 +15,4 @@ class RestauranteRepository:
         self.db.refresh(restaurante)
         return restaurante
     
-    def get_plates_from_restaurant(self, restaurante_id: int) -> list[Platos]
+    # def get_plates_from_restaurant(self, restaurante_id: int) -> list[Platos]

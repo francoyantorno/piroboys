@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 from src.db.connection import Base
 
 class Calificacion(Base):
-    __tablename__ = "calificaciones"
+    __tablename__ = "calificacion"
 
     id = Column(Integer, primary_key=True)
     pedido_id = Column(Integer, nullable=False)
