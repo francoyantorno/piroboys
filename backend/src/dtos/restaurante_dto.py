@@ -2,13 +2,13 @@ from pydantic import BaseModel
 
 class CreateRestauranteDTO(BaseModel):
     name: str
-    category: str
-    address: str
-    average_rating: int
+    categoria: str
+    direccion: str
+    calificacion_promedio: int
 
 class RestauranteResponseDTO(BaseModel):
     id: int
     name: str
-    category: str
-    address: str
-    average_rating: int
+    categoria: str
+    direccion: str
+    calificacion_promedio: int

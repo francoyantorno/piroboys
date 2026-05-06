@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 
+from piroboys.backend.src.db.models.platos_model import Platos
 from src.db.models.restaurante_model import Restaurante
 
 
@@ -14,5 +15,4 @@ class RestauranteRepository:
         self.db.refresh(restaurante)
         return restaurante
     
-    def get_plates_from_restaurant(self, restaurante_id: int) -> list[Plates]
-        
+    def get_plates_from_restaurant(self, restaurante_id: int) -> list[Platos]
