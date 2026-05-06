@@ -21,8 +21,7 @@ class UserRepository:
         return self.db.query(User).filter(User.email == email).first()
 
     def list_all(self) -> list[User]:
-        # TODO: devolver todos los usuarios
-        ...
+        return self.db.query(User).all()
 
     def update(self, user_id: int, **fields) -> User | None:
         # TODO: actualizar los campos pasados en **fields y devolver el User actualizado

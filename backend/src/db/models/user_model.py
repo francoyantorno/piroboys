@@ -11,5 +11,5 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     password_hash = Column(String, nullable=False)
     age = Column(Integer, nullable=False)
-    is_admin = Column(Boolean, default=False)
+    role = Column(String, nullable=False)  # "cliente", "repartidor", "administrador"
     created_at = Column(DateTime, server_default=func.now())

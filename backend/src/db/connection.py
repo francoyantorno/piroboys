@@ -7,6 +7,9 @@ engine = create_engine(settings.DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 Base = declarative_base()
 
+# Crear tablas automáticamente (solo para desarrollo)
+Base.metadata.create_all(bind=engine)
+
 
 def get_db():
     """Dependency de FastAPI: abre una sesión por request y la cierra al final."""
