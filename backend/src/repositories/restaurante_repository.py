@@ -12,18 +12,15 @@ class RestauranteRepository:
         self.db.commit()
         self.db.refresh(restaurante)
         return restaurante
-    
-    def get_restaurante_from_id(self, restaurante_id: int) -> Restaurante:
+
+    def find_by_id(self, restaurante_id: int) -> Restaurante | None:
         return self.db.query(Restaurante).filter(Restaurante.id == restaurante_id).first()
 
-    def update_restaurante(self,nombre: str, categoria: str, direccion: str, calificacion_promedio: float, restaurante_id: int) -> Restaurante:
+    def update(self, restaurante_id: int, **fields) -> Restaurante | None:
         restaurante = self.db.query(Restaurante).filter(Restaurante.id == restaurante_id).first()
         if restaurante:
-            restaurante.nombre = nombre
-            restaurante.categoria = categoria
-            restaurante.direccion = direccion
-            restaurante.calificacion_promedio = calificacion_promedio
+            for key, value in fields.items():
+                setattr(restaurante, key, value)
             self.db.commit()
             self.db.refresh(restaurante)
         return restaurante
-    
