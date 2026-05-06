@@ -9,7 +9,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     email = Column(String, unique=True, nullable=False)
-    password_hash = Column(String, nullable=False)
-    age = Column(Integer, nullable=False)
-    role = Column(String, nullable=False)  # "cliente", "repartidor", "administrador"
-    created_at = Column(DateTime, server_default=func.now())
+    contrasena = Column(String, nullable=False)
+    edad = Column(Integer, nullable=False)
+    rol = Column(String, nullable=False)  # "cliente", "repartidor", "administrador"
+    creado_en = Column(DateTime, server_default=func.now())
