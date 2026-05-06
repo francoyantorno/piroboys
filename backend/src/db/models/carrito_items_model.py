@@ -1,9 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from sqlalchemy.sql import func
 
-from piroboys.backend.src.db.models import user_model
-from user_model import User
-
 from src.db.connection import Base
 
 class Carrito_items(Base):
