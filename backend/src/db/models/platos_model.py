@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 from src.db.connection import Base
 
 class Platos(Base):
-    __tablename__ = "platos"
+    __tablename__ = "Plato"
 
     id = Column(Integer, primary_key=True)
     nombre = Column(String, nullable=False)
