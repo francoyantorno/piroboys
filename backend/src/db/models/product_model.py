@@ -1,9 +1,14 @@
-# TODO: definir el modelo Product (id, name, price, stock, created_at, etc.)
-# Seguí el patrón de user_model.py
-#
-# from sqlalchemy import Column, Integer, String, Numeric
-# from src.db.connection import Base
-#
-# class Product(Base):
-#     __tablename__ = "products"
-#     ...
+from sqlalchemy import Column, Integer, String, Numeric, DateTime
+from sqlalchemy.sql import func
+
+from src.db.connection import Base
+
+
+class Product(Base):
+    __tablename__ = "products"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    price = Column(Numeric(10, 2), nullable=False)
+    stock = Column(Integer, nullable=False)
+    creado_en = Column(DateTime, server_default=func.now())

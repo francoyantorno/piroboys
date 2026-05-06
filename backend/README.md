@@ -25,14 +25,16 @@ Estructura base de un proyecto en capas (routers, services, repositories, models
 ## Setup
 
 ```bash
+cd Backend
 python -m venv venv
-source venv/bin/activate          # Linux/Mac
-# venv\Scripts\activate            # Windows
+source venv/bin/activate          # Linux/Mac        
+# Solo ejecutarlo la primera vez que se hace: Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+# venv\Scripts\Activate.ps1       # Windows
 
 pip install -r requirements.txt
 cp .env.example .env               # editá con tus credenciales
-
-uvicorn src.main:app --reload
+# Verificar tener el .env bien configurado
+uvicorn src.app:app --reload
 ```
 
 Abrir http://localhost:8000/docs para ver Swagger.
