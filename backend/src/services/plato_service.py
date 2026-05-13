@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from src.dtos.platos_dto import CreatePlatoDTO, PlatoResponseDTO
+from backend.src.dtos.plato_dto import CreatePlatoDTO, PlatoResponseDTO
 from src.mappers.plato_mapper import to_plato_response
 from src.repositories.plato_repository import PlatoRepository
 from src.utils.errors import NotFoundError

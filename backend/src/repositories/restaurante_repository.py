@@ -24,3 +24,29 @@ class RestauranteRepository:
             self.db.commit()
             self.db.refresh(restaurante)
         return restaurante
+
+    def search(self, q: str | None = None, categoria: str | None = None) -> list[Restaurante]:
+        query = self.db.query(Restaurante)
+        
+        if q:
+            query = query.filter(Restaurante.nombre.ilike(f"%{q}%"))
+        
+        if categoria:
+            query = query.filter(Restaurante.categoria == categoria)
+        
+        query = query.order_by(Restaurante.calificacion_promedio.desc())
+        return query.all()
+
+    def list_by_restaurant(self, restaurante_id: int) -> list[Restaurante]:
+        return self.db.query(Restaurante).filter(Restaurante.id == restaurante_id).all()
+
+    def list_available_by_restaurant(self, restaurante_id: int) -> list[Restaurante]:
+        return self.db.query(Restaurante).filter(Restaurante.id == restaurante_id).all()
+
+    def delete(self, restaurante_id: int) -> bool:
+        restaurante = self.db.query(Restaurante).filter(Restaurante.id == restaurante_id).first()
+        if restaurante:
+            self.db.delete(restaurante)
+            self.db.commit()
+            return True
+        return False

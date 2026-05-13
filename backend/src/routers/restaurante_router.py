@@ -3,12 +3,15 @@ from sqlalchemy.orm import Session
 
 from src.db.connection import get_db
 from src.dtos.restaurante_dto import CreateRestauranteDTO, RestauranteResponseDTO
-from src.dtos.platos_dto import PlatoResponseDTO
 from src.schemas.restaurante_schema import CreateRestauranteSchema
 from src.services.restaurante_service import RestauranteService
-from src.services.plato_service import PlatoService
 
 router = APIRouter(prefix="/Restaurantes", tags=["restaurantes"])
+
+
+@router.get("/", response_model=list[RestauranteResponseDTO])
+def search_restaurantes(q: str | None = None, categoria: str | None = None, db: Session = Depends(get_db)):
+    return RestauranteService(db).search(q=q, categoria=categoria)
 
 
 @router.post("/", response_model=RestauranteResponseDTO, status_code=status.HTTP_201_CREATED)

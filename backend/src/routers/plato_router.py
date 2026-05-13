@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from src.db.connection import get_db
-from src.dtos.platos_dto import CreatePlatoDTO, PlatoResponseDTO
+from backend.src.dtos.plato_dto import CreatePlatoDTO, PlatoResponseDTO
 from src.schemas.plato_schema import CreatePlatoSchema, UpdatePlatoSchema
 from src.services.plato_service import PlatoService
 
