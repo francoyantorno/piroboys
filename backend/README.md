@@ -24,15 +24,16 @@ Estructura base de un proyecto en capas (routers, services, repositories, models
 
 ## Setup
 
-```bash
-cd Backend
+```powershell
+# Desde la raíz del repo GitHub
+cd piroboys\backend
 python -m venv venv
-source venv/bin/activate          # Linux/Mac        
-# Solo ejecutarlo la primera vez que se hace: Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
-# venv\Scripts\Activate.ps1       # Windows
-
+# Windows PowerShell:
+.\venv\Scripts\Activate.ps1
+# Linux/Mac:
+# source venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env               # editá con tus credenciales
+copy .env.example .env               # editá con tus credenciales
 # Verificar tener el .env bien configurado
 uvicorn src.app:app --reload
 ```

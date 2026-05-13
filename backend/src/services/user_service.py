@@ -22,9 +22,9 @@ class UserService:
 
     def get_by_id(self, user_id: int) -> UserResponseDTO:
         # TODO: buscar el user. Si no existe, lanzar NotFoundError. Devolver UserResponseDTO.
-        ...
+        
 
-    def list_all(self) -> list[UserResponseDTO]:
+    #def list_all(self) -> list[UserResponseDTO]:
         # TODO: devolver lista de UserResponseDTO
         ...
 

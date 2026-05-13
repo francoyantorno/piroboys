@@ -1,12 +1,12 @@
 from pydantic import BaseModel
 
-class CreateRepartidorDTO(BaseModel):
+class CreateClienteDTO(BaseModel):
     nombre: str
     email: str
     direccion: str
     telefono: int
 
-class RepartidorResponseDTO(BaseModel):
+class ClienteResponseDTO(BaseModel):
     id: int
     nombre: str
     email: str
