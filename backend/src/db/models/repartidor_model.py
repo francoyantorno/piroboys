@@ -7,9 +7,9 @@ from user_model import User
 from src.db.connection import Base
 
 class Repartidor(User):
-    __tablename__ = "repartidores"
+    __tablename__ = "Repartidor"
 
     id = Column(Integer, primary_key=True)
-    nombre = Column(String, nullable=False)
-    vehiculo = Column(String, nullable=False)
+    nombre = Column(String(100), nullable=False)
+    vehiculo = Column(String(50), nullable=False)
     disponible = Column(Boolean, default=True)

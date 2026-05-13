@@ -10,10 +10,11 @@ class Cliente(User):
     __tablename__ = "Cliente"
 
     id = Column(Integer, primary_key=True)
-    nombre = Column(String, nullable=False)
-    direccion = Column(String, nullable=False)
+    nombre = Column(String(100), nullable=False)
+    email = Column(String(150), unique=True, nullable=False)
+    direccion = Column(String(200), nullable=False)
+    codigo_postal = Column(String(10), nullable=False)
     telefono = Column(Integer, unique=True, nullable=False)
-    codigo_postal = Column(Integer, nullable=False)
-    email = Column(String, unique=True, nullable=False)
+
     
     
