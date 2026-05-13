@@ -9,6 +9,11 @@ from src.services.restaurante_service import RestauranteService
 router = APIRouter(prefix="/Restaurantes", tags=["restaurantes"])
 
 
+@router.get("/", response_model=list[RestauranteResponseDTO])
+def search_restaurantes(q: str | None = None, categoria: str | None = None, db: Session = Depends(get_db)):
+    return RestauranteService(db).search(q=q, categoria=categoria)
+
+
 @router.post("/", response_model=RestauranteResponseDTO, status_code=status.HTTP_201_CREATED)
 def create_restaurante(payload: CreateRestauranteSchema, db: Session = Depends(get_db)):
     dto = CreateRestauranteDTO(**payload.model_dump())

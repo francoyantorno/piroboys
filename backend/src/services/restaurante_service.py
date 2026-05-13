@@ -45,3 +45,7 @@ class RestauranteService:
         deleted = self.repo.delete(restaurante_id)
         if not deleted:
             raise NotFoundError(f"Restaurante con id {restaurante_id} no encontrado")
+
+    def search(self, q: str | None = None, categoria: str | None = None) -> list[RestauranteResponseDTO]:
+        restaurantes = self.repo.search(q=q, categoria=categoria)
+        return [to_restaurante_response(r) for r in restaurantes]
