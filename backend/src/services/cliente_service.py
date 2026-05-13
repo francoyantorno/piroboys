@@ -9,17 +9,18 @@ class ClienteService:
         self.repo = ClienteRepository(db)
 
     def create(self, nombre: str, email: str, direccion: str, codigo_postal: str, telefono: str | None = None):
-        # Verificar que el email no exista
-        existing = self.repo.find_by_email(email)
+        # Normalizar email y verificar que no exista
+        email_norm = email.strip().lower()
+        existing = self.repo.find_by_email(email_norm)
         if existing:
             raise ConflictError("Email ya registrado")
 
         return self.repo.create(
-            nombre=nombre,
-            email=email,
-            direccion=direccion,
-            codigo_postal=codigo_postal,
-            telefono=telefono
+            nombre=nombre.strip(),
+            email=email_norm,
+            direccion=direccion.strip(),
+            codigo_postal=codigo_postal.strip(),
+            telefono=telefono.strip() if isinstance(telefono, str) else None
         )
 
     def get_by_id(self, cliente_id: int):
