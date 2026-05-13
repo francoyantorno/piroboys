@@ -4,10 +4,10 @@ from sqlalchemy.sql import func
 from src.db.connection import Base
 
 class Restaurante(Base):
-    __tablename__ = "restaurante"
+    __tablename__ = "Restaurante"
 
     id = Column(Integer, primary_key=True)
-    nombre = Column(String, nullable=False)
-    categoria = Column(String, nullable=False)
+    nombre = Column(String(100), nullable=False)
+    categoria = Column(String(50), nullable=False)
     direccion = Column(String, nullable=False)
-    calificacion_promedio = Column(Float, nullable=True)
+    calificacion_promedio = Column(Float, nullable=True, default=0.0)
