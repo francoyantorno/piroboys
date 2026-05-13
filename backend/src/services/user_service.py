@@ -24,7 +24,7 @@ class UserService:
         # TODO: buscar el user. Si no existe, lanzar NotFoundError. Devolver UserResponseDTO.
         
 
-    def list_all(self) -> list[UserResponseDTO]:
+    #def list_all(self) -> list[UserResponseDTO]:
         # TODO: devolver lista de UserResponseDTO
         ...
 

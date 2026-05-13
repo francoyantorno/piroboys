@@ -3,8 +3,10 @@ from sqlalchemy.orm import Session
 
 from src.db.connection import get_db
 from src.dtos.restaurante_dto import CreateRestauranteDTO, RestauranteResponseDTO
+from src.dtos.platos_dto import PlatoResponseDTO
 from src.schemas.restaurante_schema import CreateRestauranteSchema
 from src.services.restaurante_service import RestauranteService
+from src.services.plato_service import PlatoService
 
 router = APIRouter(prefix="/Restaurantes", tags=["restaurantes"])
 
@@ -39,3 +41,8 @@ def update_restaurante(restaurante_id: int, payload: CreateRestauranteSchema, db
 @router.delete("/{restaurante_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_restaurante(restaurante_id: int, db: Session = Depends(get_db)):
     RestauranteService(db).delete(restaurante_id)
+
+
+@router.get("/{restaurante_id}/menu", response_model=list[PlatoResponseDTO])
+def get_menu_restaurante(restaurante_id: int, db: Session = Depends(get_db)):
+    return PlatoService(db).list_available_by_restaurant(restaurante_id)
