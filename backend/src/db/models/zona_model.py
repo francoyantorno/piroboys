@@ -8,5 +8,5 @@ class Zona(Base):
 
     id = Column(Integer, primary_key=True)
     restaurante_id = Column(Integer, nullable=False)
-    nombre = Column(String, nullable=False)
-    codigo_postal = Column(String, nullable=False)
+    nombre = Column(String(100), nullable=False)
+    codigo_postal = Column(String(10), nullable=False)
